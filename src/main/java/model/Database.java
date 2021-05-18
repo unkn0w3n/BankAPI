@@ -9,7 +9,6 @@ import java.sql.*;
 
 public class Database {
     private static Connection connection;
-
     //CREATE DATABASES
     public static void greet(Connection db) throws SQLException {
         try (Statement dataQuery = db.createStatement()) {
@@ -19,7 +18,6 @@ public class Database {
             e.printStackTrace();
         }
     }
-
     //RETURN CONNECTIONS
     public static Connection getH2Connection() throws SQLException, SQLException {
         if(Database.connection == null){
@@ -27,6 +25,5 @@ public class Database {
         }
         return Database.connection;
     }
-
 }
 
