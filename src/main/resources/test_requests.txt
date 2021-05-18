@@ -1,0 +1,111 @@
+POST http://localhost:8000/api/accounts
+Content-Type: application/json
+
+{
+ "title":"Personal account",
+ "number":"40817810255863910700",
+ "currency":"RUB",
+ "user_id":"3",
+ "balance":"1709500",
+}
+###
+------------------------------------------------------------
+POST http://localhost:8000/api/transaction
+Content-Type: application/json
+
+{
+ "operation"    : "CONTRACT_B2B",
+ "account_from" : "40817810255863910004",
+ "account_to"   : "40817810255863910005",
+ "balance"      : "777000",
+}
+###
+
+POST http://localhost:8000/api/transaction
+Content-Type: application/json
+
+{
+ "operation"    : "EXTERNAL_P2P",
+ "account_from" : "40817810255863910001",
+ "account_to"   : "40817810255863910003",
+ "balance"      : "25000",
+}
+###
+
+POST http://localhost:8000/api/transaction
+Content-Type: application/json
+
+{
+ "operation"    : "INTERNAL",
+ "account_from" : "40817810255863910001",
+ "account_to"   : "40817810255863910002",
+ "balance"      : "105000",
+}
+###
+
+POST http://localhost:8000/api/transaction
+Content-Type: application/json
+
+{
+ "operation" : "TOPUP",
+ "account"   : "40817810255863910700",
+ "balance"   : "105000",
+}
+###
+-----------------------------------------------------------
+POST http://localhost:8000/api/cards
+Content-Type: application/json
+
+{
+  "account_id": 1,
+  "type": "VISA",
+  "title": "VISA CLASSIC",
+  "number": "4377759828000007",
+  "currency": "RUB",
+  "limit": 100000,
+  "approved": true,
+  "active": true
+}
+###
+
+GET http://localhost:8000/api/cards
+
+###
+
+POST http://localhost:8000/api/users
+Content-Type: application/json
+
+{
+"login": "p_pushkin",
+"password": "123123",
+"full_name": "Александр Сергеевич Пушкин",
+"phone": "79081005353",
+"role":  "PERSONAL",
+}
+###
+
+POST http://localhost:8000/api/contragent
+Content-Type: application/json
+
+{
+"login":     "corp_lenspecsmu",
+"password":  "123123",
+"full_name": "LENSPECSMU CORP ACCOUNT",
+"phone":     "79015557878",
+"role":      "CORP",
+}
+###
+
+POST http://localhost:8000/api/contract
+Content-Type: application/json
+
+{
+"unique_id":"c22e6372-1724-45fe-922d-56842c91570a",
+"description":"Контракт на поставку угля",
+"user_id_from":"3",
+"user_id_to":"4",
+"account_from":"40817810255863910004",
+"account_to":"40817810255863910005",
+"c_status":"DONE",
+}
+###

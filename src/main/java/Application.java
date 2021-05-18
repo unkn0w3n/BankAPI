@@ -1,8 +1,6 @@
-import controller.HttpController;
 import model.Database;
+import routes.HttpServerRoutes;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
@@ -10,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Application {
     public static void main(String[] args) throws Exception {
-        //Connection to DB
+        //Connection to DB. Create and fill tables.
         Connection connection = null;
         try {
             connection = Database.getH2Connection();
@@ -18,8 +16,9 @@ public class Application {
         } catch (SQLException ex) {
             System.out.println("Database connection failure: " + ex.getMessage());
         }
+
         //Run Server and parse Requests
-        HttpController server = new HttpController();
+        HttpServerRoutes server = new HttpServerRoutes();
         server.start();
 
         //sleep

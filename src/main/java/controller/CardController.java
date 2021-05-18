@@ -21,7 +21,6 @@ public class CardController {
 
     //--- POST methods ---/
     public String getAllCardsByAccountId(Integer accId) throws SQLException, JsonProcessingException {
-        System.out.println("[+] getAllCardsByAccountId");
         PreparedStatement preparedStatement = db.prepareStatement("SELECT * FROM cards WHERE id = ?");
         preparedStatement.setInt(1, accId);
         ResultSet resultSet = preparedStatement.executeQuery();
