@@ -17,17 +17,16 @@ public class CardController {
     Connection db = null;
     Statement statement;
 
-    private static String  SQL_INSERT_NEW_CARD = "INSERT INTO cards(account_id, type, title, number, currency, `limit`, approved, active) VALUES (?,?,?,?,?,?,?,?)";
+    private static String SQL_INSERT_NEW_CARD           = "INSERT INTO cards(account_id, type, title, number, currency, `limit`, approved, active) VALUES (?,?,?,?,?,?,?,?)";
     private static String SQL_SELECT_CARD_JOIN_ACCOUNTS = "SELECT * FROM cards INNER JOIN accounts WHERE cards.account_id = accounts.id and accounts.id = ?";
-    private static String SQL_SELECT_CARD_BALANCE = "SELECT accounts.balance, accounts.number as account_number, cards.number as card_number FROM cards INNER JOIN accounts WHERE cards.account_id = accounts.id and cards.number = ?";
-    private static String SQL_UPDATE_ACCOUNT_BALANCE = "UPDATE accounts SET balance = balance + ? WHERE number = ?";
+    private static String SQL_SELECT_CARD_BALANCE       = "SELECT accounts.balance, accounts.number as account_number, cards.number as card_number FROM cards INNER JOIN accounts WHERE cards.account_id = accounts.id and cards.number = ?";
+    private static String SQL_UPDATE_ACCOUNT_BALANCE    = "UPDATE accounts SET balance = balance + ? WHERE number = ?";
 
     public CardController() throws SQLException {
         Connection connection = Database.getH2Connection();
         this.db = connection;
         this.statement = this.db.createStatement();
     }
-
 
     //--- Get /api/cards/d+ ---/
     public String getAllCardsByUserId(Integer accId) throws SQLException, JsonProcessingException {
@@ -101,7 +100,7 @@ public class CardController {
     }
 
     //AddToCardBalance
-    public HashMap<String,String> addToCardBalance(Double addNumber, String cardNumber) throws SQLException {
+    public HashMap<String,String> addAmountToCardBalance(Double addNumber, String cardNumber) throws SQLException {
         HashMap<String, String> result = new HashMap<>();
         result = getCardBalance(cardNumber);
         try {
@@ -114,7 +113,4 @@ public class CardController {
         }
         return getCardBalance(cardNumber);
     }
-
-
-
 }
