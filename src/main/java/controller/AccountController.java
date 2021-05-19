@@ -21,7 +21,7 @@ public class AccountController {
 
     //check account exist in database
     public boolean checkAccountExistById(int accId) throws SQLException {
-        PreparedStatement preparedStatement = db.prepareStatement("SELECT COUNT(1) AS CNT FROM accounts WHERE account_id = ?");
+        PreparedStatement preparedStatement = db.prepareStatement("SELECT COUNT(1) AS CNT FROM accounts WHERE acc_number = ?");
         preparedStatement.setInt(1, accId);
         ResultSet resultSet = preparedStatement.executeQuery();
         ArrayList<Card> cards = new ArrayList<>();
