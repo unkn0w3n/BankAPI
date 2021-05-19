@@ -89,7 +89,6 @@ public class HttpServerRoutes {
                 case "GET":
                     break;
 
-                //ADD NEW CARD TO DATABASE
                 case "POST":
                     CardController cardController = null;
                     try {
