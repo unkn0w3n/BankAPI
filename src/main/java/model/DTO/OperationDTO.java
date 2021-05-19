@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Objects;
 
-public class DTOOperation {
+public class OperationDTO {
     private String operation;
     @JsonProperty("entity")
     private String entityType;
@@ -49,7 +49,7 @@ public class DTOOperation {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DTOOperation that = (DTOOperation) o;
+        OperationDTO that = (OperationDTO) o;
         return Objects.equals(operation, that.operation) && Objects.equals(entityType, that.entityType) && Objects.equals(entityNumber, that.entityNumber) && Objects.equals(amount, that.amount);
     }
 

@@ -9,7 +9,6 @@ import org.h2.jdbc.JdbcSQLException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class CardController {
     private Card card;
@@ -28,7 +27,7 @@ public class CardController {
         this.statement = this.db.createStatement();
     }
 
-    //--- Get /api/cards/d+ ---/
+    //[:GET][/api/cards/d+]. Return all cards of user
     public String getAllCardsByUserId(Integer accId) throws SQLException, JsonProcessingException {
         PreparedStatement preparedStatement = db.prepareStatement(SQL_SELECT_CARD_JOIN_ACCOUNTS);
         preparedStatement.setInt(1, accId);
@@ -50,11 +49,11 @@ public class CardController {
         return result;
     }
 
-    //---- POST /api/card. Add new Card ----//
+    //[:POST][/api/cards]. Add new Card to Database
     public String insertNewCardToDB(Card card) throws SQLException {
         int result = new Helper().countSqlResults("SELECT * FROM accounts where id = "+card.getAccount_id());
         if (result<1) {
-            return "Account number for card not exist in database. Firstly create account number";
+            return "Account with [id="+card.getAccount_id()+"] does not exist in database. Impossible to link card to None account.";
         }
         try {
             PreparedStatement preparedStatement = this.db.prepareStatement(SQL_INSERT_NEW_CARD);
@@ -74,7 +73,8 @@ public class CardController {
         return "";
     }
 
-    //get CardBalance
+    //[:POST] /api/cards/
+    //return: account_number, card_number, balance
     public HashMap<String,String> getCardBalance(String number) throws SQLException {
         HashMap<String, String> result = new HashMap<>();
         //validate
@@ -99,7 +99,8 @@ public class CardController {
         return result;
     }
 
-    //AddToCardBalance
+    //[:POST] /api/cards/
+    //return: account_number, card_number, balance
     public HashMap<String,String> addAmountToCardBalance(Double addNumber, String cardNumber) throws SQLException {
         HashMap<String, String> result = new HashMap<>();
         result = getCardBalance(cardNumber);

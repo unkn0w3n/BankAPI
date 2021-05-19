@@ -1,7 +1,6 @@
 package controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.Card;
 import model.Database;
 
 import java.sql.*;
