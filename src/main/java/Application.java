@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.concurrent.TimeUnit;
 
-
 public class Application {
     public static void main(String[] args) throws Exception {
         //Connection to DB. Create and fill tables.
@@ -17,7 +16,7 @@ public class Application {
             System.out.println("Database connection failure: " + ex.getMessage());
         }
 
-        //Run Server and parse Requests
+        //Start Server + Routes parser
         HttpServerRoutes server = new HttpServerRoutes();
         server.start();
 

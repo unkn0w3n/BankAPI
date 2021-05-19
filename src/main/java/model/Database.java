@@ -22,7 +22,7 @@ public class Database {
     public static Connection getH2Connection() throws SQLException, SQLException {
         if(Database.connection == null){
             //Database.connection = DriverManager.getConnection("jdbc:h2:mem:");
-            Database.connection = DriverManager.getConnection("jdbc:h2:file:./../../h2db;");
+            Database.connection = DriverManager.getConnection("jdbc:h2:file:./../../h2db;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE");
         }
         return Database.connection;
     }
