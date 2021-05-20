@@ -90,25 +90,20 @@ public class PaymentController {
         if (result<1) {
             return "Account with [id="+payment.getAccount_from()+"] not exists in Database.";
         }
-
-        //CHECK ROLE IS VALID
-//        if( (user.getRole().equals("PERSONAL")) && (user.getRole().equals("CORP")) && (user.getRole().equals("OPERATOR")) ){
-//            return "Invalid ROLE: "+user.getRole()+". VALID ROLES: PERSONAL, CORP, OPERATOR (IN UPPERCASE)";
-//        }
-
-        //check linked user exist
-        result = new SqlHelper().countSqlResults("SELECT * FROM users where id = "+account.getUser_id());
-        System.out.println("USER_RESULT:"+result);
+        //check account_to exist
+        result = new SqlHelper().countSqlResults("SELECT * FROM accounts where number = "+payment.getAccount_to());
         if (result<1) {
-            return "User with [id="+account.getUser_id()+"] not exist. Cant create account linked to non-existence user.";
+            return "Account with [id="+payment.getAccount_to()+"] not exists in Database.";
         }
+
         try {
-            PreparedStatement preparedStatement = this.db.prepareStatement(SQL_INSERT_NEW_ACCOUNT);
-            preparedStatement.setString(1,  account.getTitle());
-            preparedStatement.setString(2,  account.getNumber());
-            preparedStatement.setString(3,  account.getCurrency());
-            preparedStatement.setInt(4,     account.getUser_id());
-            preparedStatement.setDouble(5,  account.getBalance());
+            PreparedStatement preparedStatement = this.db.prepareStatement(SQL_INSERT_NEW_PAYMENT);
+            preparedStatement.setString(1,  payment.getP_type());
+            preparedStatement.setString(2,  payment.getAccount_from());
+            preparedStatement.setString(3,  payment.getAccount_to());
+            preparedStatement.setDouble(4,  payment.getAmount());
+            preparedStatement.setInt(5,     payment.getApproved_by_id());
+            preparedStatement.setString(6,  payment.getStatus());
             preparedStatement.execute();
         } catch (JdbcSQLException ex) {
             return ex.getMessage();
