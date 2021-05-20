@@ -3,8 +3,8 @@ package model;
 import java.util.Date;
 import java.util.Objects;
 
-public class Payment {
-    private String p_type;
+public class Transaction {
+    private String t_type;
     private String account_from;
     private String account_to;
     private Double amount;
@@ -13,12 +13,12 @@ public class Payment {
     private Date created_at;
     private Date updated_at;
 
-    public String getP_type() {
-        return p_type;
+    public String getT_type() {
+        return t_type;
     }
 
-    public void setP_type(String p_type) {
-        this.p_type = p_type;
+    public void setT_type(String t_type) {
+        this.t_type = t_type;
     }
 
     public String getAccount_from() {
@@ -79,8 +79,8 @@ public class Payment {
 
     @Override
     public String toString() {
-        return "Payment{" +
-                "p_type='" + p_type + '\'' +
+        return "Transaction{" +
+                "t_type='" + t_type + '\'' +
                 ", account_from='" + account_from + '\'' +
                 ", account_to='" + account_to + '\'' +
                 ", amount=" + amount +
@@ -95,13 +95,13 @@ public class Payment {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Payment payment = (Payment) o;
-        return p_type.equals(payment.p_type) && account_from.equals(payment.account_from) && account_to.equals(payment.account_to) && Objects.equals(amount, payment.amount) && Objects.equals(approved_by_id, payment.approved_by_id) && Objects.equals(status, payment.status) && Objects.equals(created_at, payment.created_at) && Objects.equals(updated_at, payment.updated_at);
+        Transaction transaction = (Transaction) o;
+        return t_type.equals(transaction.t_type) && account_from.equals(transaction.account_from) && account_to.equals(transaction.account_to) && Objects.equals(amount, transaction.amount) && Objects.equals(approved_by_id, transaction.approved_by_id) && Objects.equals(status, transaction.status) && Objects.equals(created_at, transaction.created_at) && Objects.equals(updated_at, transaction.updated_at);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(p_type, account_from, account_to, amount, approved_by_id, status, created_at, updated_at);
+        return Objects.hash(t_type, account_from, account_to, amount, approved_by_id, status, created_at, updated_at);
     }
 
 

@@ -31,7 +31,9 @@ public class HttpServerRoutes {
         ApiUsers apiUsers = new ApiUsers();
         apiUsers.process(server);
 
-        //Post && GET: /api/payments
+        //Post && GET: /api/transactions
+        ApiTransactions apiTransactions = new ApiTransactions();
+        apiTransactions.process(server);
 
 
         //Server start

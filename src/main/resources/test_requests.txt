@@ -1,3 +1,28 @@
+====== TRANSACTIONS =======
+### GET TRANSACTION INFO BY ACCOUNT NUMBER
+GET http://localhost:8000/api/transactions/account/40817810255863910001
+
+###
+### GET TRANSACTION INFO BY ID
+GET http://localhost:8000/api/transactions/2
+
+###
+### ADD NEW TRANSACTION
+POST http://localhost:8000/api/transactions
+Content-Type: application/json
+
+{
+  "t_type": "EXTERNAL_P2P",
+  "account_from": "40817810255863910001",
+  "account_to": "40817810255863910004",
+  "amount": 790,
+  "approved_by_id":  777,
+  "status":  "AUTO_APPROVED",
+  "created_at" : "",
+  "updated_at" : ""
+}
+###
+
 ====== USERS =====
 ### ADD NEW USER
 POST http://localhost:8000/api/users

@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS accounts,
     cards,
     account_cards,
     payments,
+    transactions,
     users,
     logs,
     contracts;
@@ -31,16 +32,16 @@ CREATE TABLE `cards` (
 );
 
 /* payments */
-CREATE TABLE payments (
+CREATE TABLE transactions (
                             id 				 INT PRIMARY KEY AUTO_INCREMENT,
-                            p_type 	         VARCHAR(15) NOT NULL,
+                            t_type 	         VARCHAR(15) NOT NULL,
                             account_from 	 VARCHAR(20) NOT NULL,
                             account_to 		 VARCHAR(20) NOT NULL,
                             amount			 FLOAT NOT NULL,
                             approved_by_id   INT NOT NULL DEFAULT 0,
                             status	         VARCHAR(20),
-                            created_at       TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                            updated_at		 TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                            created_at       DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                            updated_at		 DATE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 
