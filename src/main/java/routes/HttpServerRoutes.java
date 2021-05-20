@@ -23,35 +23,22 @@ public class HttpServerRoutes {
         ApiCardsBalance apiCardsBalance = new ApiCardsBalance();
         apiCardsBalance.process(server);
 
+        //Post && GET: /api/accounts
+        ApiAccounts apiAccounts = new ApiAccounts();
+        apiAccounts.process(server);
+
+        //Post && GET: /api/users
+        ApiUsers apiUsers = new ApiUsers();
+        apiUsers.process(server);
+
+        //Post && GET: /api/payments
+
+
         //Server start
         server.setExecutor(null);
         server.start();
         System.out.println("server started on port:"+serverPort);
     }
-
-    //Send HTTP Answer
-    public static void sendHttpResponse(HttpExchange exchange, String answer, int HttpRequestCode) throws IOException {
-        answer = "{\"message\":\""+answer+"\"}";
-        exchange.sendResponseHeaders(HttpRequestCode, answer.getBytes().length);
-        OutputStream output = exchange.getResponseBody();
-        output.write(answer.getBytes());
-        output.flush();
-        exchange.close();
-    }
-
-//    //requestBodyToString
-//    public String requestBodyToString(HttpExchange exchange) throws IOException {
-//        InputStreamReader isr =  new InputStreamReader(exchange.getRequestBody(),"utf-8");
-//        BufferedReader br = new BufferedReader(isr);
-//        int b;
-//        StringBuilder buf = new StringBuilder(1024);
-//        while ((b = br.read()) != -1) {
-//            buf.append((char) b);
-//        }
-//        br.close();
-//        isr.close();
-//        return buf.toString();
-//    }
 
 
 }

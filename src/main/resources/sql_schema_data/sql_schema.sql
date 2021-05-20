@@ -53,8 +53,6 @@ CREATE TABLE `users` (
                          `full_name` 	     VARCHAR(70) NOT NULL,
                          `phone`		     VARCHAR(20) UNIQUE NOT NULL,
                          `role`			     VARCHAR(20) NOT NULL,
-                         `created_at`        TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                         `updated_at`		 TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 

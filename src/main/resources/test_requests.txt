@@ -1,3 +1,80 @@
+====== USERS =====
+### ADD NEW USER
+POST http://localhost:8000/api/users
+Content-Type: application/json
+
+{
+  "login": "p_pushkin",
+  "password": "123123",
+  "full_name": "Александр Сергеевич Пушкин",
+  "phone": "79081005353",
+  "role":  "PERSONAL"
+}
+###
+
+
+### GET USER INFO BY USERID
+GET http://localhost:8000/api/users/1
+
+
+###
+
+==== ACCOUNTS ====
+### GET ACCOUNT INFO BY ACCOUNTNUMBER
+GET http://localhost:8000/api/accounts/40817810255863910001
+
+###
+### ADD NEW ACCOUNT:
+POST http://localhost:8000/api/accounts
+Content-Type: application/json
+
+{
+  "title": "Personal account",
+  "number": "40817810255863910001",
+  "currency": "RUB",
+  "user_id": 2,
+  "balance": 100.00
+}
+
+###
+===== CARDS ======
+### GET USERID CARDS
+GET http://localhost:8000/api/cards/1
+
+
+###
+### ADD MONEY TO CARD:
+POST http://localhost:8000/api/cards/balance
+Content-Type: application/json
+
+{
+  "operation": "ADD_AMOUNT_TO_CARD",
+  "entity" : "CARD",
+  "entity_number": "4377759828000001",
+  "double": 777.17
+}
+
+###
+### ADD NEW CARD:
+POST http://localhost:8000/api/cards
+Content-Type: application/json
+
+{
+  "account_id": 1,
+  "type": "VISA",
+  "title": "VISA CLASSIC",
+  "number": "4377759828000007",
+  "currency": "RUB",
+  "limit": 100000,
+  "approved": true,
+  "active": true
+}
+###
+
+
+
+
+
 POST http://localhost:8000/api/accounts
 Content-Type: application/json
 

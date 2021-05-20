@@ -9,8 +9,7 @@ public class User {
     private String full_name;
     private String phone;
     private String role;
-    private Date created_at;
-    private Date updated_at;
+
 
     public String getLogin() {
         return login;
@@ -52,33 +51,17 @@ public class User {
         this.role = role;
     }
 
-    public Date getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
-    public Date getUpdated_at() {
-        return updated_at;
-    }
-
-    public void setUpdated_at(Date updated_at) {
-        this.updated_at = updated_at;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return login.equals(user.login) && password.equals(user.password) && Objects.equals(full_name, user.full_name) && Objects.equals(phone, user.phone) && role.equals(user.role) && Objects.equals(created_at, user.created_at) && Objects.equals(updated_at, user.updated_at);
+        return login.equals(user.login) && password.equals(user.password) && Objects.equals(full_name, user.full_name) && Objects.equals(phone, user.phone) && role.equals(user.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(login, password, full_name, phone, role, created_at, updated_at);
+        return Objects.hash(login, password, full_name, phone, role);
     }
 
     @Override
@@ -89,8 +72,6 @@ public class User {
                 ", full_name='" + full_name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", role='" + role + '\'' +
-                ", created_at=" + created_at +
-                ", updated_at=" + updated_at +
                 '}';
     }
 

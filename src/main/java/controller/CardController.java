@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import model.Card;
 import model.Database;
 import org.h2.jdbc.JdbcSQLException;
+import utilits.SqlHelper;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -18,8 +19,8 @@ public class CardController {
 
     private static String SQL_INSERT_NEW_CARD           = "INSERT INTO cards(account_id, type, title, number, currency, `limit`, approved, active) VALUES (?,?,?,?,?,?,?,?)";
     private static String SQL_SELECT_CARD_JOIN_ACCOUNTS = "SELECT * FROM cards INNER JOIN accounts WHERE cards.account_id = accounts.id and accounts.id = ?";
-    private static String SQL_SELECT_CARD_BALANCE       = "SELECT accounts.balance, accounts.number as account_number, cards.number as card_number FROM cards INNER JOIN accounts WHERE cards.account_id = accounts.id and cards.number = ?";
     private static String SQL_UPDATE_ACCOUNT_BALANCE    = "UPDATE accounts SET balance = balance + ? WHERE number = ?";
+    private static String SQL_SELECT_CARD_BALANCE       = "SELECT accounts.balance, accounts.number as account_number, cards.number as card_number FROM cards INNER JOIN accounts WHERE cards.account_id = accounts.id and cards.number = ?";
 
     public CardController() throws SQLException {
         Connection connection = Database.getH2Connection();
@@ -49,9 +50,11 @@ public class CardController {
         return result;
     }
 
+
+
     //[:POST][/api/cards]. Add new Card to Database
     public String insertNewCardToDB(Card card) throws SQLException {
-        int result = new Helper().countSqlResults("SELECT * FROM accounts where id = "+card.getAccount_id());
+        int result = new SqlHelper().countSqlResults("SELECT * FROM accounts where id = "+card.getAccount_id());
         if (result<1) {
             return "Account with [id="+card.getAccount_id()+"] does not exist in database. Impossible to link card to None account.";
         }
@@ -68,7 +71,8 @@ public class CardController {
             preparedStatement.execute();
         } catch (JdbcSQLException ex) {
             //System.out.println("    gm:"        +ex.getMessage());
-            return "Card with number "+card.getNumber()+" already exist in database";
+            return "[-] Card not added. Please check your request details.";
+
         }
         return "";
     }
