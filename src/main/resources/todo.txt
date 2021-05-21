@@ -2,5 +2,9 @@
 1. Contract
 2. Logs
 
-3. PAYMENT FROM ONE TO ANOTHER
-4.
+4. CHECK INCAPSULATION OF CLASSES
+
+
+    ObjectMapper objectMapper = new ObjectMapper();
+    Connection db = null;
+    Statement statement;

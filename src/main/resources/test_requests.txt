@@ -1,3 +1,28 @@
+======== OPERATOR =========
+### ACTIVATE CARD
+POST http://localhost:8000/api/operator/approve/card
+Content-Type: application/json
+
+{
+  "operation": "ACTIVATE",
+  "entity" : "CARD",
+  "entity_number": "4377759828000001",
+  "double": 1
+}
+
+###
+### APPROVE TRANSACTION
+POST http://localhost:8000/api/operator/approve/transaction
+Content-Type: application/json
+
+{
+  "operation": "APPROVE",
+  "entity" : "TRANSACTION",
+  "entity_number": "2",
+  "double": 1
+}
+
+###
 ====== TRANSACTIONS =======
 ### GET TRANSACTION INFO BY ACCOUNT NUMBER
 GET http://localhost:8000/api/transactions/account/40817810255863910001

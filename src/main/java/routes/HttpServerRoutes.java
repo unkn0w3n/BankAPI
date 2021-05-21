@@ -35,6 +35,10 @@ public class HttpServerRoutes {
         ApiTransactions apiTransactions = new ApiTransactions();
         apiTransactions.process(server);
 
+        //POST && GET: /api/approve
+        ApiApprove apiApprove = new ApiApprove();
+        apiApprove.process(server);
+
 
         //Server start
         server.setExecutor(null);

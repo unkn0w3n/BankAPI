@@ -14,7 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ApiTransactions {
-    ObjectMapper objectMapper = new ObjectMapper();
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     ApiTransactions(){
     }
@@ -54,7 +54,7 @@ public class ApiTransactions {
         Transaction transaction = objectMapper.readValue(exchange.getRequestBody(), Transaction.class);
         try {
             TransactionController transactionController = new TransactionController();
-            String result = transactionController.addNewTransactionInfo(transaction);
+            String result = transactionController.createNewTransaction(transaction);
             if(result.length()>0){
                 HttpHelper.sendHttpResponse(exchange, "error", result,200);
             }
