@@ -2,27 +2,27 @@
 
 # BankAPI
 
-Java BankAPI console API manager with buil-in HTTP Server and Database server 🚀
+Java BankAPI console API manager with built-in HTTP Server and Database server 🚀
 Source code of application for online banking backend. 💰
 
 ### Software stack used
 * Java 8
 * Jackson
 * HTTPServer
-* H2Database embded
+* H2Database embed
 * H2Database in memory
 
 ---
 ### Features
 
-* Add user of corporate, personal or bank operator type.
+* Add user of corporate, personal or operator type.
 * Manage accounts: add, delete, view. CRUD.
-* Manage cards: setup new, lock existant.
-* Manage transaction: set limits, approve pending
+* Manage cards: setup new, lock existent.
+* Manage transaction: set limits, approve pending payments.
 
 
 ### Installation && Run
-- Copy BankAPI.jar to destanation folder.
+- Copy BankAPI.jar to destination folder.
 - Type in console this command:
 Install `BankAPI` with:
 ``` bash
