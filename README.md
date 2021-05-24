@@ -11,8 +11,6 @@ Source code of application for online banking backend.
 * H2Database embded
 * H2Database in memory
 
-Right now the usage of this library (as probably others too) may harm your Instagram's profile because of new script-detection algorithms. You were warned.
-
 ---
 ### Features
 
