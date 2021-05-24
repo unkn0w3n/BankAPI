@@ -1,35 +1,37 @@
-$$REPO
+<img src="https://moneymakerfactory.ru/Pics/loads/multy_img-2-20215610.jpg">
+# BankAPI
 
-    $$1LINER
+Java BankAPI console API manager with buil-in HTTP Server and Database server 🚀
+Source code of application for online banking backend.
 
-background details relevant to understanding what this module does
-Usage
+### Used technologies
+* Java 8
+* Jackson
+* HTTPServer
+* H2Database embded
+* H2Database in memory
 
-$$EXAMPLE
+Right now the usage of this library (as probably others too) may harm your Instagram's profile because of new script-detection algorithms. You were warned.
 
-API
+---
+### [Features]
+---
+# Add user of corporate, personal or bank operator type.
+# Manage accounts: add, delete, view. CRUD.
+# Manage cards: setup new, lock existant.
+# Manage transaction: set limits, approve pending
 
-const $$rePo = require('$$REPO')
 
-See api_formatting.md for tips.
-Installation
+### Installation && Run
+- Copy BankAPI.jar to destanation folder.
+- Type in console this command:
+Install `BankAPI` with:
+``` bash
+java -jar BankApi.jar
+```
+- Open in browser: http://localhost:8000/
 
-With npm:
 
-npm install $$REPO
-
-With yarn:
-
-yarn add $$REPO
-
-Acknowledgments
-
-$$REPO was inspired by...
-See Also
-
-    noffle/common-readme
-    ...
-
-License
-
-$$ZEE_LICENSE
+# Terms and conditions
+* You will NOT use this API for marketing purposes (spam, botting, harassment, massive bulk messaging...).
+* No support to anyone who wants to use this API to send spam or commit other crimes.
