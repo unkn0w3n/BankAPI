@@ -3,7 +3,7 @@
 # BankAPI
 
 Java BankAPI console API manager with buil-in HTTP Server and Database server 🚀
-Source code of application for online banking backend.
+Source code of application for online banking backend. 💰
 
 ### Software stack used
 * Java 8
@@ -27,7 +27,7 @@ Source code of application for online banking backend.
 Install `BankAPI` with:
 ``` bash
 java -jar BankApi.jar
-```
+``` 
 - Open in browser: http://localhost:8000/
 
 
