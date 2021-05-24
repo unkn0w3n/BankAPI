@@ -18,7 +18,7 @@ public class AccountController {
     private Statement statement;
 
     private static String SQL_SELECT_ACCOUNT_INFO = "SELECT accounts.id, accounts.number, accounts.balance, accounts.user_id, users.full_name FROM accounts, users WHERE accounts.user_id = users.id AND accounts.number = ?";
-    private static String SQL_CHECK_ACCOUNT_EXIST = "SELECT COUNT(1) AS CNT FROM accounts WHERE acc_number = ?";
+    private static String SQL_CHECK_ACCOUNT_EXIST = "SELECT COUNT(1) AS CNT FROM accounts WHERE number = ?";
     private static String SQL_INSERT_NEW_ACCOUNT  = "INSERT INTO accounts(title, `number`, currency, user_id, balance) VALUES (?, ?, ?, ?, ?)";
 
     public AccountController() throws SQLException {

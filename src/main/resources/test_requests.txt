@@ -1,4 +1,4 @@
-======== OPERATOR =========
+#======== OPERATOR =========
 ### ACTIVATE CARD
 POST http://localhost:8000/api/operator/approve/card
 Content-Type: application/json
@@ -23,7 +23,7 @@ Content-Type: application/json
 }
 
 ###
-====== TRANSACTIONS =======
+#====== TRANSACTIONS =======
 ### GET TRANSACTION INFO BY ACCOUNT NUMBER
 GET http://localhost:8000/api/transactions/account/40817810255863910001
 
@@ -48,7 +48,7 @@ Content-Type: application/json
 }
 ###
 
-====== USERS =====
+#====== USERS =====
 ### ADD NEW USER
 POST http://localhost:8000/api/users
 Content-Type: application/json
@@ -69,7 +69,7 @@ GET http://localhost:8000/api/users/1
 
 ###
 
-==== ACCOUNTS ====
+#==== ACCOUNTS ====
 ### GET ACCOUNT INFO BY ACCOUNTNUMBER
 GET http://localhost:8000/api/accounts/40817810255863910001
 
@@ -87,7 +87,7 @@ Content-Type: application/json
 }
 
 ###
-===== CARDS ======
+#===== CARDS ======
 ### GET USERID CARDS
 GET http://localhost:8000/api/cards/1
 

@@ -1,7 +1,7 @@
-package controller;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.HttpServer;
+import controller.CardController;
+import controller.TransactionController;
 import model.Database;
 import model.Transaction;
 import org.junit.jupiter.api.AfterEach;
@@ -20,6 +20,8 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -95,7 +97,15 @@ class TransactionControllerTest {
     }
 
     @Test
-    void createNewTransaction() throws IOException {
+    void createNewTransaction() throws IOException, SQLException {
+        String accountTo = "40817810255863910004";
+        //balance before
+        Map<String, String> accountData = new HashMap<>();
+        CardController cardController = new CardController();
+        accountData = cardController.getCardBalance("4377759828000001");
+        Double balance_before = Double.parseDouble(accountData.get("balance"));
+
+        //HTTP ADD Transaction request
         URL url = new URL("http://localhost:8000/api/transactions");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
@@ -106,7 +116,7 @@ class TransactionControllerTest {
         String jsonRequest = "{\n" +
                 "  \"t_type\": \"EXTERNAL_P2P\",\n" +
                 "  \"account_from\": \"40817810255863910001\",\n" +
-                "  \"account_to\": \"40817810255863910004\",\n" +
+                "  \"account_to\": \""+accountTo+"\",\n" +
                 "  \"amount\": 790,\n" +
                 "  \"approved_by_id\":  777,\n" +
                 "  \"status\":  \"AUTO_APPROVED\",\n" +
@@ -120,6 +130,11 @@ class TransactionControllerTest {
         out.close();
         //200 => OK
         Assertions.assertEquals(connection.getResponseCode(), 200);
+
+        //balance after
+        accountData = cardController.getCardBalance("4377759828000001");
+        Double balance_after = Double.parseDouble(accountData.get("balance"));
+        assertEquals(balance_before, balance_after+790);
 
         //read answer
         BufferedReader in = new BufferedReader(

@@ -67,6 +67,26 @@ CREATE TABLE `logs` (
 );
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* contracts */
 CREATE TABLE `contracts` (
                              `id` 				 INT PRIMARY KEY AUTO_INCREMENT,

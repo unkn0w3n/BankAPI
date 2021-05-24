@@ -42,7 +42,7 @@ public class OperatorController {
         preparedStatement.setInt(2, Integer.parseInt(data.getEntityNumber()));
         preparedStatement.execute();
         //MOVE MONEY
-        transController.moveMoneyFromOneAccountToAnother(preparedStatement, transaction);
+        transController.moveMoneyFromOneAccountToAnother(transaction);
     }
 
     //activate card

@@ -25,6 +25,7 @@ public class ApiUsers {
             switch (exchange.getRequestMethod()) {
                 //[:GET] [/api/users/(\d+)]. Get user info.
                 case "GET":
+                    System.out.println("HEY I AM IN GET!");
                     String userId = "";
                     Matcher m = Pattern.compile("/api/users/(\\d+)$").matcher(requestUrl);
                     while(m.find()){
@@ -54,6 +55,7 @@ public class ApiUsers {
 
                 //[:POST] [/api/users]. Add new card to database.
                 case "POST":
+                    System.out.println("HEY I AM IN POST!");
                     User user = objectMapper.readValue(exchange.getRequestBody(), User.class);
                     try {
                         UserController userController = new UserController();

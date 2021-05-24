@@ -1,7 +1,6 @@
-package controller;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.HttpServer;
+import controller.UserController;
 import model.Database;
 import model.User;
 import org.junit.jupiter.api.AfterEach;
@@ -64,7 +63,6 @@ class UserControllerTest {
         //Stop server
         httpServer.stop(0);
     }
-
 
     @Test
     void checkUserExistByPhone() throws SQLException {

@@ -36,7 +36,7 @@ public class UserController {
         ResultSet resultSet = preparedStatement.executeQuery();
         Integer result = 0;
         while (resultSet.next()) {
-            result = resultSet.getInt("cnt");
+            result++;
         }
         return result>0;
     }
@@ -76,12 +76,13 @@ public class UserController {
     //[:POST][/api/users]. Add new user to Database
     public String insertNewUserToDB(User user) throws SQLException {
         //check user.phone exist
-        int result = new SqlHelper().countSqlResults("SELECT * FROM users WHERE phone = "+user.getPhone());
+        int result = new SqlHelper().countSqlResults("SELECT * FROM users WHERE phone = '"+user.getPhone()+"'");
         if (result>0) {
+            System.out.println("User with [phone="+user.getPhone()+"] already exist in Database.");
             return "User with [phone="+user.getPhone()+"] already exist in Database.";
         }
         //check user.phone exist
-        result = new SqlHelper().countSqlResults("SELECT * FROM users WHERE login = "+user.getLogin());
+        result = new SqlHelper().countSqlResults("SELECT * FROM users WHERE login = '"+user.getLogin()+"'");
         if (result>0) {
             return "This Login is not available. Please choose another login.";
         }

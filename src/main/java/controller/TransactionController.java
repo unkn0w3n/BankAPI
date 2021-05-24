@@ -102,8 +102,8 @@ public class TransactionController {
         this.statement = this.db.createStatement();
         String transaction_result = "";
         if(tStatus.indexOf("APPROVED")!=-1){
-            System.out.println("APPROVED => MEANS WRITE!");
-            transaction_result = moveMoneyFromOneAccountToAnother(this.statement, transaction);
+            System.out.println("APPROVED => MEANS DO MONEY TRANSFER INSTANTLY!");
+            transaction_result = moveMoneyFromOneAccountToAnother(transaction);
             if(transaction_result.length()>0) return transaction_result;
         }
 
@@ -133,7 +133,7 @@ public class TransactionController {
         return "";
     }
 
-    public String moveMoneyFromOneAccountToAnother(Statement statement, Transaction transaction) throws SQLException {
+    public String moveMoneyFromOneAccountToAnother(Transaction transaction) throws SQLException {
         String sql = "";
         //Check insufficient funds on sender account.
         ResultSet rs = this.statement.executeQuery(SQL_SELECT_ACCOUNT_BALANCE+transaction.getAccount_from());
@@ -141,7 +141,10 @@ public class TransactionController {
         while (rs.next()) {
             balance = rs.getDouble("balance");
         }
+        System.out.println("Balance from:"+balance);
+        System.out.println("Trans amount:"+transaction.getAmount());
         if(transaction.getAmount() > balance){
+            System.out.println("error: Insufficient funds on sender account: Balance of sender account is less then amount of transaction");
             return "error: Insufficient funds on sender account: Balance of sender account is less then amount of transaction";
         }
         //Sub money

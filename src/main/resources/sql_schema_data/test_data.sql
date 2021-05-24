@@ -19,7 +19,7 @@ INSERT INTO cards(account_id, type, title, number, currency, `limit`, approved, 
 /* Payments */
 INSERT INTO transactions(t_type, account_from, account_to, amount, approved_by_id, status, created_at, updated_at) VALUES
 ('EXTERNAL_P2P'       ,'40817810255863910001', '40817810255863910003', 100501, 4,    'OPERATOR_APPROVED',  CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
-('EXTERNAL_P2P'       ,'40817810255863910001', '40817810255863910003', 100501, 4,   'PENDING',            CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
+('EXTERNAL_P2P'       ,'40817810255863910001', '40817810255863910003', 100501, 4,    'PENDING',            CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
 ('INTERNAL'           ,'40817810255863910001', '40817810255863910002', 201301, 777,  'AUTO_APPROVED',      CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
 ('CONTRACT_B2B'       ,'40817810255863910004', '40817810255863910005', 501301, 777,  'AUTO_APPROVED',      CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
 
@@ -31,6 +31,22 @@ INSERT INTO users(login, password, full_name, phone, role) VALUES
 ('corp_dhl'      ,'123123',  'DHL CORPORATE ACCOUNT',     '79117095755',   'CORP'),
 ('corp_spec'     ,'123123',  'SPEC CORPORATE ACCOUNT',    '79141115353',   'CORP'),
 ('oper_007'      ,'123123',  'Григорьев Иван Андреевич',  '79057770101',   'OPERATOR');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* logs */
