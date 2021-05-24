@@ -30,6 +30,6 @@ java -jar BankApi.jar
 - Open in browser: http://localhost:8000/
 
 
-# Terms and conditions
+## Terms and conditions
 * You will NOT use this API for marketing purposes (spam, botting, harassment, massive bulk messaging...).
 * No support to anyone who wants to use this API to send spam or commit other crimes.
