@@ -4,7 +4,7 @@
 Java BankAPI console API manager with buil-in HTTP Server and Database server 🚀
 Source code of application for online banking backend.
 
-### Used technologies
+### Software stack used
 * Java 8
 * Jackson
 * HTTPServer
@@ -14,12 +14,12 @@ Source code of application for online banking backend.
 Right now the usage of this library (as probably others too) may harm your Instagram's profile because of new script-detection algorithms. You were warned.
 
 ---
-### [Features]
----
-# Add user of corporate, personal or bank operator type.
-# Manage accounts: add, delete, view. CRUD.
-# Manage cards: setup new, lock existant.
-# Manage transaction: set limits, approve pending
+### Features
+
+* Add user of corporate, personal or bank operator type.
+* Manage accounts: add, delete, view. CRUD.
+* Manage cards: setup new, lock existant.
+* Manage transaction: set limits, approve pending
 
 
 ### Installation && Run
