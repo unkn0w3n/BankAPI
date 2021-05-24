@@ -19,9 +19,6 @@ public class ApiApprove {
     private ObjectMapper objectMapper = new ObjectMapper();
     private final int operatorId = 5;
 
-    ApiApprove(){
-    }
-
     public void process(HttpServer server){
         server.createContext("/api/operator", (exchange -> {
             exchange.getResponseHeaders().set("Content-Type", "application/json;charset=utf-8");

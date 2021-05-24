@@ -50,8 +50,6 @@ public class CardController {
         return result;
     }
 
-
-
     //[:POST][/api/cards]. Add new Card to Database
     public String insertNewCardToDB(Card card) throws SQLException {
         int result = new SqlHelper().countSqlResults("SELECT * FROM accounts where id = "+card.getAccount_id());

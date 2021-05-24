@@ -16,9 +16,6 @@ import java.util.regex.Pattern;
 public class ApiTransactions {
     private ObjectMapper objectMapper = new ObjectMapper();
 
-    ApiTransactions(){
-    }
-
     public void process(HttpServer server){
         server.createContext("/api/transactions", (exchange -> {
             exchange.getResponseHeaders().set("Content-Type", "application/json;charset=utf-8");
@@ -41,7 +38,6 @@ public class ApiTransactions {
                         createNewTransaction(exchange);
                     }
                     break;
-
                 default:
                     HttpHelper.sendHttpResponse(exchange, "error","Only GET and POST Requests are allowed", 405);
             }

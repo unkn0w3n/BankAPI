@@ -15,11 +15,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ApiUsers {
-    ObjectMapper objectMapper = new ObjectMapper();
-
-    public ApiUsers(){
-
-    }
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     public void process(HttpServer server){
         server.createContext("/api/users", (exchange -> {

@@ -1,0 +1,5 @@
+0. File
+1. Project Structure
+2. Artifacts => JAR => From Modules with Dependancies
+3. Select Main Class (start)
+4. TickBox "Include with modules with Dependencies"

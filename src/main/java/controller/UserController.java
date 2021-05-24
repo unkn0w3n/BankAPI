@@ -14,9 +14,9 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class UserController {
-    ObjectMapper objectMapper = new ObjectMapper();
-    Connection db = null;
-    Statement statement;
+    private ObjectMapper objectMapper = new ObjectMapper();
+    private Connection db = null;
+    private Statement statement;
 
     private static String SQL_SELECT_USER_INFO    = "SELECT * FROM users WHERE id = ?";
     private static String SQL_INSERT_NEW_USER     = "INSERT INTO users(login, password, full_name, phone, `role`) VALUES (?, ?, ?, ?, ?)";
@@ -54,15 +54,6 @@ public class UserController {
     }
 
     //getUserInfo
-    private String login;
-    private String password;
-    private String full_name;
-    private String phone;
-    private String role;
-    private Date created_at;
-    private Date updated_at;
-
-
     public HashMap<String,String> getUserInfo(int userId){
         HashMap<String, String> result = new HashMap<>();
         try {
@@ -94,11 +85,10 @@ public class UserController {
         if (result>0) {
             return "This Login is not available. Please choose another login.";
         }
-        //CHECK ROLE IS VALID
+        //check role is valid
         if( (user.getRole().equals("PERSONAL")) && (user.getRole().equals("CORP")) && (user.getRole().equals("OPERATOR")) ){
             return "Invalid ROLE: "+user.getRole()+". VALID ROLES: PERSONAL, CORP, OPERATOR (IN UPPERCASE)";
         }
-
         try {
             PreparedStatement preparedStatement = this.db.prepareStatement(SQL_INSERT_NEW_USER);
             preparedStatement.setString(1,  user.getLogin());

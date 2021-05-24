@@ -12,10 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ApiCards {
-    ObjectMapper objectMapper = new ObjectMapper();
-
-    ApiCards(){
-    }
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     public void process(HttpServer server){
         server.createContext("/api/cards", (exchange -> {
@@ -67,7 +64,7 @@ public class ApiCards {
                     System.out.println("[+] POST /api/cards. Added new Card to Database");
                     break;
                 default:
-                    HttpHelper.sendHttpResponse(exchange, "Разрешены только POST or GET запросы", 405);
+                    HttpHelper.sendHttpResponse(exchange, "Allowed only GET or POST http requests", 405);
             }
             exchange.close();
         }));

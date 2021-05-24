@@ -1,7 +1,7 @@
 package model;
 import org.h2.tools.RunScript;
+import utilits.Properties;
 
-import javax.xml.crypto.Data;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.sql.*;
@@ -9,20 +9,21 @@ import java.sql.*;
 
 public class Database {
     private static Connection connection;
-    //CREATE DATABASES
-    public static void greet(Connection db) throws SQLException {
-        try (Statement dataQuery = db.createStatement()) {
-            RunScript.execute(connection, new FileReader("src/main/resources/sql_schema_data/sql_schema.sql"));
-            RunScript.execute(connection, new FileReader("src/main/resources/sql_schema_data/test_data.sql"));
+
+    //Create Databases + insert Test Data
+    public static void createDatabase(Connection db) throws SQLException {
+        try {
+            RunScript.execute(connection, new FileReader(Properties.SQL_SCHEMA_FILE_PATH));
+            RunScript.execute(connection, new FileReader(Properties.SQL_TEST_DATA_FILE_PATH));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
-    //RETURN CONNECTIONS
+
+    //Return or create connection
     public static Connection getH2Connection() throws SQLException, SQLException {
-        if(Database.connection == null){
-            //Database.connection = DriverManager.getConnection("jdbc:h2:mem:");
-            Database.connection = DriverManager.getConnection("jdbc:h2:file:./../../h2db;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE");
+        if(Database.connection == null || Database.connection.isClosed()){
+            Database.connection = DriverManager.getConnection(Properties.DB_CONNECT_PATH);
         }
         return Database.connection;
     }

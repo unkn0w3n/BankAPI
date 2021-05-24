@@ -25,7 +25,6 @@ public class TransactionController {
         this.statement = this.db.createStatement();
     }
 
-
     public String getTransactionInfoById(int transactionId){
         String result = "";
         Transaction transaction = new Transaction();
@@ -78,7 +77,6 @@ public class TransactionController {
         }
         return result;
     }
-
 
     //[:POST][/api/transactions]. Add new TransactionInfo to Database
     public String createNewTransaction(Transaction transaction) throws SQLException {
@@ -135,7 +133,6 @@ public class TransactionController {
         return "";
     }
 
-
     public String moveMoneyFromOneAccountToAnother(Statement statement, Transaction transaction) throws SQLException {
         String sql = "";
         //Check insufficient funds on sender account.
@@ -158,5 +155,4 @@ public class TransactionController {
 
         return "";
     }
-
 }

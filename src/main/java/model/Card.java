@@ -1,8 +1,10 @@
 package model;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
-public class Card {
+public class Card implements Comparable<Card>{
     private Integer account_id;
     private String  type;
     private String  title;
@@ -11,7 +13,6 @@ public class Card {
     private Double  limit;
     private Boolean approved;
     private Boolean active;
-
 
     public Integer getAccount_id() {
         return account_id;
@@ -102,8 +103,10 @@ public class Card {
                 ", approved=" + approved +
                 ", active=" + active +
                 '}';
+    } 
+
+    @Override
+    public int compareTo(@NotNull Card o) {
+        return getNumber().compareTo(o.getNumber());
     }
-
-
-
 }

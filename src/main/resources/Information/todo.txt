@@ -1,0 +1,10 @@
+0. DATES and TIMESTAMP PROBLEM
+1. Contract
+2. Logs
+
+4. CHECK INCAPSULATION OF CLASSES
+
+
+    ObjectMapper objectMapper = new ObjectMapper();
+    Connection db = null;
+    Statement statement;

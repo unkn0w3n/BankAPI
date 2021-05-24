@@ -19,7 +19,6 @@ public class SqlHelper {
         Connection connection = Database.getH2Connection();
         this.db = connection;
         this.statement = this.db.createStatement();
-
     }
 
     public int countSqlResults(String sqlQuery)  throws SQLException {
